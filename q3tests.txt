@@ -1,0 +1,5 @@
+----------- find the person who orderd pizza and display who ordered what main course and beverage -----------
+
+1 ?- find(PizzaOrderer).
+[person(doreen,lasagna,coffee),person(donna,steak,water),person(david,chicken,coke),person(danny,pizza,milk)]
+PizzaOrderer = danny.

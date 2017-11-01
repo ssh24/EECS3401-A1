@@ -1,0 +1,73 @@
+----------- Test cases on "intersect" predicate -----------
+
+?- intersect([1,2,3,4],[5,4,1,6]).
+true .
+
+?- intersect([1,2,3,4],[5,6]).
+false.
+
+?- intersect([1],[]).
+false.
+
+?- intersect([1],[1]).
+true .
+
+?- intersect([],[]).
+false.
+
+?- intersect([],[1,2,3]).
+false.
+
+?- intersect([5,4,1],[3,4,2,1]).
+true .
+
+----------- Test cases on "all_intersect" predicate -----------
+
+?- all_intersect([[1,2,3],[5,4,6]],[3,4]).
+true .
+
+?- all_intersect([],[3,4]).
+true.
+
+?- all_intersect([[1,2,3],[1,2,5],[5,4,6]],[3,4]).
+false.
+
+?- all_intersect([[5,4,1],[3,4],[1]],[7,8]).
+false.
+
+?- all_intersect([[5,4,1],[3,4],[1]], X).
+X = [5, 3, 1|_G2171] ;
+X = [5, 3, _G2170, 1|_G2174] ;
+X = [5, 3, _G2170, _G2173, 1|_G2177] ;
+X = [5, 3, _G2170, _G2173, _G2176, 1|_G2180] ;
+X = [5, 3, _G2170, _G2173, _G2176, _G2179, 1|_G2183] ;
+X = [5, 3, _G2170, _G2173, _G2176, _G2179, _G2182, 1|_G2186] ;
+X = [5, 3, _G2170, _G2173, _G2176, _G2179, _G2182, _G2185, 1|...] ;
+X = [5, 3, _G2170, _G2173, _G2176, _G2179, _G2182, _G2185, _G2188|...] ;
+X = [5, 3, _G2170, _G2173, _G2176, _G2179, _G2182, _G2185, _G2188|...] ;
+X = [5, 3, _G2170, _G2173, _G2176, _G2179, _G2182, _G2185, _G2188|...] .
+
+----------- Test cases on "member_nl" predicate -----------
+
+?- member_nl(c,[a, [b, e, f], [e, [g , c, d], b]]).
+true .
+
+?- member_nl(h,[a, [b, e, f], [e, [g , c, d], b]]).
+false.
+
+?- member_nl(X,[a, [b, e, f], [e, [g , c, d], b]]).
+X = a ;
+X = b ;
+X = e ;
+X = f ;
+X = e ;
+X = g ;
+X = c ;
+X = d ;
+X = b.
+
+?- member_nl(c, [z,[v,b,d,[w,r,f,[g,c,d],[f,f,c]]]]).
+true .
+
+?- member_nl(e, [z,[v,b,d,[w,r,f,[g,c,d],[f,f,c]]]]).
+false.
